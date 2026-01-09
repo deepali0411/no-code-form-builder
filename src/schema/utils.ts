@@ -3,7 +3,7 @@
  */
 
 import { v4 as uuidv4 } from 'uuid';
-import type { FormSchema, FieldSchema, FieldType, FormMetadata, FormSettings } from '../types';
+import type { FormSchema, FieldSchema, FieldType } from '../types';
 import { SCHEMA_VERSION, DEFAULT_FORM_TITLE, DEFAULT_SUBMIT_BUTTON_TEXT, DEFAULT_SUCCESS_MESSAGE } from '../constants';
 import { getFieldDefinition } from './fieldRegistry';
 

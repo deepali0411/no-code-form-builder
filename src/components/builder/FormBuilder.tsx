@@ -14,7 +14,7 @@ import type { FieldType } from '../../types';
 
 export function FormBuilder() {
     const { currentForm, addField, reorderField } = useFormBuilderStore();
-    const [activeId, setActiveId] = useState<string | null>(null);
+    const [_activeId, setActiveId] = useState<string | null>(null);
     const [activeType, setActiveType] = useState<FieldType | null>(null);
 
     // Configure sensors for better drag experience

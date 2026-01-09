@@ -12,7 +12,7 @@ import { ERROR_MESSAGES } from '../constants';
 export function validateField(
     field: FieldSchema,
     value: FieldValue,
-    allFormData?: FormData
+    _allFormData?: FormData
 ): ValidationResult {
     const { config } = field;
 
@@ -55,7 +55,7 @@ export function validateField(
 /**
  * Validate a single validation rule
  */
-function validateRule(rule: ValidationRule, value: FieldValue, field: FieldSchema): ValidationResult {
+function validateRule(rule: ValidationRule, value: FieldValue, _field: FieldSchema): ValidationResult {
     switch (rule.type) {
         case 'required':
             return isEmpty(value)
@@ -258,7 +258,7 @@ export function validateForm(fields: FieldSchema[], formData: FormData): FormVal
 export function evaluateConditions(
     field: FieldSchema,
     formData: FormData,
-    allFields: FieldSchema[]
+    _allFields: FieldSchema[]
 ): boolean {
     if (!field.conditions) {
         return true; // No conditions = always visible

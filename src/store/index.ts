@@ -5,7 +5,7 @@
 
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import type { FormSchema, FieldSchema, FieldType, BuilderMode, FormData } from '../types';
+import type { FormSchema, FieldSchema, FieldType, BuilderMode, FormData, FieldValue } from '../types';
 import { createEmptyFormSchema, createFieldSchema, updateFormTimestamp, cloneField, removeFieldWithCleanup, reorderFields } from '../schema/utils';
 
 interface FormBuilderState {
@@ -37,7 +37,7 @@ interface FormBuilderState {
     reorderField: (fromIndex: number, toIndex: number) => void;
 
     // Form data actions
-    setFieldValue: (fieldId: string, value: unknown) => void;
+    setFieldValue: (fieldId: string, value: FieldValue) => void;
     resetFormData: () => void;
 }
 
@@ -46,7 +46,7 @@ interface FormBuilderState {
  */
 export const useFormBuilderStore = create<FormBuilderState>()(
     devtools(
-        (set, get) => ({
+        (set) => ({
             // Initial state
             currentForm: createEmptyFormSchema(),
             formData: {},

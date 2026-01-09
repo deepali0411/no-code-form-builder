@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import { useFormBuilderStore } from '../../store';
 import { validateForm, evaluateConditions } from '../../validation';
-import type { FormData, FieldSchema } from '../../types';
+import type { FormData, FieldSchema, FieldValue } from '../../types';
 import { Input } from '../ui/Input';
 import { Select } from '../ui/Select';
 import { Button } from '../ui/Button';
@@ -16,7 +16,7 @@ export function FormRenderer() {
     const [formData, setFormData] = useState<FormData>({});
     const [errors, setErrors] = useState<Record<string, string>>({});
 
-    const handleFieldChange = (fieldId: string, value: unknown) => {
+    const handleFieldChange = (fieldId: string, value: FieldValue) => {
         setFormData((prev) => ({
             ...prev,
             [fieldId]: value,
@@ -105,9 +105,9 @@ export function FormRenderer() {
  */
 interface FieldRendererProps {
     field: FieldSchema;
-    value: unknown;
+    value: FieldValue;
     error?: string;
-    onChange: (value: unknown) => void;
+    onChange: (value: FieldValue) => void;
 }
 
 function FieldRenderer({ field, value, error, onChange }: FieldRendererProps) {
